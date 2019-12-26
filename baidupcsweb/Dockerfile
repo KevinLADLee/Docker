@@ -1,3 +1,4 @@
+FROM alpine:3.8
 MAINTAINER KevinLAD <kevinladlee@gmail.com>
 # Based on oldiy's baidupcs-web-docker
 USER root
