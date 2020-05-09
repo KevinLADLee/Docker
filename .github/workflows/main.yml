@@ -31,7 +31,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     # Docker repository to tag the image with
         repository: kevinlad/sharelatex-full
-    # Path to the build context
+        cache_froms: sharelatex/sharelatex
+        # Path to the build context
         path: sharelatex-full
     # Path to the Dockerfile (Default is '{path}/Dockerfile')
         dockerfile: sharelatex-full/Dockerfile
