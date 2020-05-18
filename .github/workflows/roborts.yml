@@ -32,7 +32,7 @@ jobs:
       run: |
         docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
         cd $GITHUB_WORKSPACE/roborts
-        docker buildx build -t kevinlad/roborts:base-slam-rplidar-multiplatform --platform linux/arm64,linux/amd64 .
+        docker buildx build -t kevinlad/roborts:base-slam-rplidar-multiplatform --platform linux/arm64,linux/amd64 . --push
         
         
         
