@@ -1,28 +1,15 @@
-FROM ros:melodic-ros-base-bionic
+FROM kevinlad/roborts-docker-base
 
-RUN apt-get update && apt-get install -y wget python-catkin-tools \
-    && rm -rf /var/lib/apt/lists/*
+ADD roborts_edu_ws /roborts_edu_ws/
 
-RUN mkdir -p /roborts/roborts_edu_ws/src
+WORKDIR /roborts_edu_ws
 
-WORKDIR /roborts/roborts_edu_ws
-
-RUN wget -c https://raw.githubusercontent.com/Artinx-Robotics/Common/master/roborts-melodic-slam-rplidar.rosinstall \
+RUN pwd && ls /roborts_edu_ws/ \
     && wstool init src roborts-melodic-slam-rplidar.rosinstall \ 
-    && wstool update -t src
+    && wstool update -t /roborts_edu_ws/src \
+    && /bin/bash build.sh
 
-RUN apt-get update &&             \
-    rosdep update &&              \
-    rosdep install 		  \
-	--from-paths src          \ 
-	--ignore-src              \
-	--rosdistro=melodic -y && \ 
-    apt-get autoremove         && \
-    rm -rf /var/lib/apt/lists/*
-
-ADD build.sh /roborts/roborts_edu_ws
-
-RUN /bin/bash build.sh
+VOLUME [ "/roborts_edu_ws" ]
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 

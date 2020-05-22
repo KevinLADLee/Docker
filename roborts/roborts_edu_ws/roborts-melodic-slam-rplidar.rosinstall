@@ -1,0 +1,4 @@
+- git: {local-name: roborts, uri: 'https://github.com/Artinx-Robotics/RoboRTS-Edu.git', version: melodic-devel}
+- git: {local-name: roborts_slam, uri: 'https://github.com/Artinx-Robotics/RoboRTS-Edu-SLAM.git', version: melodic-devel}
+- git: {local-name: rplidar_ros, uri: 'https://github.com/Artinx-Robotics/rplidar_ros'}
+
