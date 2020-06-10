@@ -6,7 +6,7 @@ ENV DISPLAY=":1"
 ENV ENABLE_CJK_FONT=1
 ENV TZ=Asia/Shanghai
 
-RUN apt-get update && apt-get install -y apt-transport-https ca-certificates \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-transport-https ca-certificates \
     && sed -i "s@http://ftp.debian.org@https://mirrors.huaweicloud.com@g" /etc/apt/sources.list \
     && sed -i "s@http://security.debian.org@https://mirrors.huaweicloud.com@g" /etc/apt/sources.list \
     && sed -i "s@http://deb.debian.org@https://mirrors.huaweicloud.com@g" /etc/apt/sources.list \
@@ -20,6 +20,7 @@ RUN apt-get update \
                           libxss-dev            \
                           libasound2-dev        \
                           locales               \
+                          fonts-wqy-zenhei      \   
     && wget ${URI} -O /defaults/baidunetdisk.deb     \
     && apt-get install -y /defaults/baidunetdisk.deb \
     && rm -rf /var/lib/apt/lists/*
